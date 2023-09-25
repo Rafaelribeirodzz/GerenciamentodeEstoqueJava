@@ -1,5 +1,6 @@
 package DesafioSemana4;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,6 +11,7 @@ public class Loja {
     private static Map<Produto, Integer> sacola;
     public static ArrayList<Produto> produtos;
     public static void main(String[] args) {
+
         produtos = new ArrayList<>();
         sacola = new HashMap<>();
         Produto produto = new Produto("Iphone 11", "eletro",2999, 10);
@@ -32,16 +34,20 @@ public class Loja {
         produtos.add(produto);
         menu();
     }
-
+    private static boolean loop=true;
+    static int count=0;
     public static void menu() {
-        System.out.println("=======================");
-        System.out.println("[1]-Adicionar produtos ao estoque.");
-        System.out.println("[2]-Controlar a quantidade de produtos.");
-        System.out.println("[3]-Registrar Venda.");
-        System.out.println("[4]-Procurar produto por categoria.");
-        System.out.println("[0]-Sair do Programa.");
-        System.out.println("=======================");
-        int n = entrada.nextInt();
+    count++;
+
+        try {
+            System.out.println("=======================");
+            System.out.println("[1]-Adicionar produtos ao estoque.");
+            System.out.println("[2]-Controlar a quantidade de produtos.");
+            System.out.println("[3]-Registrar Venda.");
+            System.out.println("[4]-Procurar produto por categoria.");
+            System.out.println("[0]-Sair do Programa.");
+            System.out.println("=======================");
+           int n = entrada.nextInt();
         switch (n) {
             case 1:
                 Estoque.addProdutos();
@@ -68,6 +74,14 @@ public class Loja {
                 System.out.println("Opção Inválida!");
                 menu();
                 break;
+        }
+        }catch(Exception e){
+            System.out.println("INVÁLIDO!! Coloque opções disponiveis!");
+
+           if(count==1) {
+               menu();
+           }
+
         }
     }
 
