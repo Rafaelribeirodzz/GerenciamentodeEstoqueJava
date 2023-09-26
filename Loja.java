@@ -8,12 +8,10 @@ import java.util.Scanner;
 
 public class Loja {
     private static Scanner entrada = new Scanner(System.in);
-    private static Map<Produto, Integer> sacola;
     public static ArrayList<Produto> produtos;
     public static void main(String[] args) {
 
         produtos = new ArrayList<>();
-        sacola = new HashMap<>();
         Produto produto = new Produto("Iphone 11", "eletro",2999, 10);
         produtos.add(produto);
         produto = new Produto("Iphone 12", "eletro",3999, 10);
@@ -34,10 +32,7 @@ public class Loja {
         produtos.add(produto);
         menu();
     }
-    private static boolean loop=true;
-    static int count=0;
     public static void menu() {
-    count++;
 
         try {
             System.out.println("=======================");
@@ -47,7 +42,7 @@ public class Loja {
             System.out.println("[4]-Procurar produto por categoria.");
             System.out.println("[0]-Sair do Programa.");
             System.out.println("=======================");
-           int n = entrada.nextInt();
+            int n = entrada.nextInt();
         switch (n) {
             case 1:
                 Estoque.addProdutos();
@@ -76,12 +71,9 @@ public class Loja {
                 break;
         }
         }catch(Exception e){
-            System.out.println("INVÁLIDO!! Coloque opções disponiveis!");
-
-           if(count==1) {
-               menu();
-           }
-
+            System.out.println("INVÁLIDO!! Digite algo válido!");
+            entrada.next();
+            menu();
         }
     }
 
